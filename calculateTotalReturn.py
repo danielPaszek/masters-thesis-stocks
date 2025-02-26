@@ -21,22 +21,36 @@ for fileName in fileNames:
         # record date but whatever
         latestDividends = [x for x in dividends if datetime.strptime(x['date'], '%Y-%m-%d') > cutoffDate]
         rollingTotal = {}
+        rollingTotalSpinoffExcl = {}
         currSum = 0
+        currSumSpinoffExcl = 0
         for dividend in latestDividends:
             currSum += dividend['splitAdjAmount']
             # ex-date
             date = dividend.get('recordDate') if dividend.get('recordDate', 0) else dividend.get('date')
-            rollingTotal[dividend['recordDate']] = currSum
+
+            if dividend['type'] != 'Spin-off':
+                currSumSpinoffExcl += dividend['splitAdjAmount']
+                rollingTotalSpinoffExcl[date] = currSumSpinoffExcl
+            rollingTotal[date] = currSum
 
         for year, yearData in transformedData.items():
-            for month, montData in yearData.items():
-                monthDate = datetime.strptime(montData['date'], '%Y-%m-%d')
-                latestTotal = None
+            for month, monthData in yearData.items():
+                monthDate = datetime.strptime(monthData['date'], '%Y-%m-%d')
+                latestTotal = 0
+                latestTotalSpinoffExcl = 0
                 for date, total in rollingTotal.items():
                     diff = monthDate - datetime.strptime(date, '%Y-%m-%d')
                     if (diff.days < 0):
                         break
                     latestTotal = total
-                montData['adjustedTotalPrice'] = latestTotal + montData['price']
+                for date, total in rollingTotalSpinoffExcl.items():
+                    diff = monthDate - datetime.strptime(date, '%Y-%m-%d')
+                    if (diff.days < 0):
+                        break
+                    latestTotalSpinoffExcl = total
+                monthData['adjustedTotalPrice'] = latestTotal + monthData['price']
+                monthData['adjustedTotalPriceSpinoffExcl'] = latestTotalSpinoffExcl + monthData['price']
 
-        break
+        with open('./data/results/' + fileName, 'w', encoding='utf-8') as f:
+            json.dump(transformedData, f, ensure_ascii=False, indent=4)
