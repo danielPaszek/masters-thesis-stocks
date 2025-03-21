@@ -2,3 +2,5 @@ selenium
 pandas
 numpy
 lxml
+pyjanitor
+scikit-learn
