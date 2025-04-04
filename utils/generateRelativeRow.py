@@ -27,7 +27,7 @@ def getRelativeRows(data, ratioKeys, fileName, i, df):
 
 def generateRow(data, month, monthData, ratioKeys, year, fileName):
     row = {}
-    fromYear = -3
+    fromYear = -3 # change to param or something
     # nextYears = range(1, 3)  # will be changed to offset range
     row['date'] = month + '-' + year
     row['ticker'] = fileName
