@@ -33,11 +33,18 @@ def generateRow(data, month, monthData, ratioKeys, year, fileName):
 
 
 def getPrices(monthData, nextMonthData, row, offset):
+    # ZLE!! - 100div + 100price -> 100div + 50price -> drop 50%, not 25%
+    # Poprawione by dzielić przez cenę. diff(price+div) / price
+    # Pewnie dało się to zrobić lepiej
     offset = str(offset)
     yPrice = nextMonthData['price'] / monthData['price'] - 1
-    yAdjTotalPrice = nextMonthData['adjustedTotalPrice'] / monthData['adjustedTotalPrice'] - 1
-    yAdjTotalPriceSpinExcl = nextMonthData['adjustedTotalPriceSpinoffExcl'] / monthData[
-        'adjustedTotalPriceSpinoffExcl'] - 1
+
+    deltaAdjTotalPrice = nextMonthData['adjustedTotalPrice'] - monthData['adjustedTotalPrice']
+    yAdjTotalPrice = deltaAdjTotalPrice / monthData['price']
+
+    deltaAdjTotalPriceSpinExcl = nextMonthData['adjustedTotalPriceSpinoffExcl'] - monthData['adjustedTotalPriceSpinoffExcl']
+    yAdjTotalPriceSpinExcl = deltaAdjTotalPriceSpinExcl / monthData['price']
+
     row['yAdjustedPriceSpinoffExcl' + offset + 'Year'] = yAdjTotalPriceSpinExcl
     row['yAdjustedPrice' + offset + 'Year'] = yAdjTotalPrice
     row['yPrice' + offset + 'Year'] = yPrice

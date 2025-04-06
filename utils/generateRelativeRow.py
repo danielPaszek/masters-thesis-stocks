@@ -37,7 +37,7 @@ def generateRow(data, month, monthData, ratioKeys, year, fileName):
         return None
     df = pd.DataFrame(relatedRows)
     df.dropna(axis=1, inplace=True)
-    # TODO: do magic
+
     for key in ratioKeys:
         if key in df.columns and monthData.get(key, 0):
             percentile = stats.percentileofscore(df[key], monthData[key])
