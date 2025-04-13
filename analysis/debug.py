@@ -26,14 +26,20 @@ def generateSpyIndex(offset, path):
         for j, nextRow in df.loc[i:].iterrows():
             nextDate = datetime.strptime(nextRow['Date'], '%b %d, %Y')
             if date.year + offset == nextDate.year and date.month == nextDate.month:
-#                 TODO: calc returns. Right now only absolute difference is calculated
-                spyData[str(date.month) + '-' + str(date.year)] = float(nextRow['Close']) - float(row['Close'])
+
+# TODO: verify what actually is 'Adj Close' column. Last columns don't have constant close diff. So what exactly it is?
+# Total return diff is 2-2,5% when counting dividends. This looks good enough
+
+                if spyData.get(str(date.year),0) == 0:
+                    spyData[str(date.year)] = {}
+
+                spyData[str(date.year)][str(date.month)] = {
+                    'yPrice': float(nextRow['Close']) / float(row['Close']) - 1,
+                    'yAdjustedTotalPrice': float(nextRow['Adj Close']) / float(row['Adj Close']) -1
+                }
                 break
-
-
-    with open('../data/test-spy.json', 'w') as fp:
-        json.dump(spyData, fp)
     print('spy generated')
+    return spyData
 
 
 
@@ -74,17 +80,19 @@ def generateAllEqualWeightIndex(offset, path):
 
             if len(currentAllData.index) < 10: # average can't be 1-2 companies
                 continue
+
             stats = {}
             for key in list(currentAllData):
-                # TODO
                 stats[key] = {
                     'mean': currentAllData.loc[:, key].mean(),
                     'median': currentAllData.loc[:, key].median()
                 }
-            spyData[month + '-' + year] = stats
+            if spyData.get(year, 0) == 0:
+                spyData[year] = {}
+            spyData[year][month] = stats
 
-    with open('../data/all-equal-data.json', 'w') as fp:
-        json.dump(spyData, fp)
+    return spyData
+
 
 if __name__ == "__main__":
     ratioKeys = ['psRatio', 'peRatio', 'priceToBook', 'evToEbitda', 'evToEbit', 'priceToFreeCashFlow', 'evToSales',
@@ -94,10 +102,14 @@ if __name__ == "__main__":
     numericalKeys = ratioKeys + yKeys + y2Keys
 
     offset = 1 # year return
+    for offset in range(1,3):
+        path = '../data/spdr-prices.txt'
+        spyData = generateSpyIndex(offset, path)
+        with open('../data/spdr-' + str(offset) + '.json', 'w') as fp:
+            json.dump(spyData, fp)
 
-    path = '../data/spdr-prices.txt'
-    generateSpyIndex(offset, path)
-
-    # path = '../data/results-no-alpha/'
-    # generateAllEqualWeightIndex(offset, path)
+        path = '../data/results-no-alpha/'
+        spyData = generateAllEqualWeightIndex(offset, path)
+        with open('../data/equal-weight-spdr-' + str(offset) + '.json', 'w') as fp:
+            json.dump(spyData, fp)
     print('Done')

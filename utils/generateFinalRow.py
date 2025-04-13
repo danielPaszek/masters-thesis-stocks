@@ -2,10 +2,10 @@ import pandas as pd
 import json
 
 
-def generateFinalRows(data, ratioKeys, fileName, i, df):
+def generateFinalRows(data, ratioKeys, fileName, i, df, offsets):
     for year, yearData in data.items():
         for month, monthData in yearData.items():
-            row = generateRow(data, month, monthData, ratioKeys, year, fileName)
+            row = generateRow(data, month, monthData, ratioKeys, year, fileName, offsets)
 
             toAdd = pd.DataFrame(row, index=[i])
             i += 1
@@ -15,13 +15,12 @@ def generateFinalRows(data, ratioKeys, fileName, i, df):
     return df, i
 
 
-def generateRow(data, month, monthData, ratioKeys, year, fileName):
+def generateRow(data, month, monthData, ratioKeys, year, fileName, offsets):
     row = {}
-    nextYears = range(1, 3)  # will be changed to offset range
     row['date'] = month + '-' + year
     row['ticker'] = fileName
 
-    for offset in nextYears:
+    for offset in offsets:
         nextYear = str(int(year) + offset)
         nextYearData = data.get(nextYear, 0)
         if nextYearData:

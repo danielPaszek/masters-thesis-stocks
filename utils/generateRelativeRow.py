@@ -3,15 +3,14 @@ import json
 from scipy import stats
 from utils.generateFinalRow import getPrices
 
-def getRelativeRows(data, ratioKeys, fileName, i, df):
+def getRelativeRows(data, ratioKeys, fileName, i, df, offsets):
     for year, yearData in data.items():
         for month, monthData in yearData.items():
             row = generateRow(data, month, monthData, ratioKeys, year, fileName)
 
             # generateFinalRow::getPrices
             if row is not None:
-                nextYears = range(1, 3)  # will be changed to offset range
-                for offset in nextYears:
+                for offset in offsets:
                     nextYear = str(int(year) + offset)
                     nextYearData = data.get(nextYear, 0)
                     if nextYearData:
