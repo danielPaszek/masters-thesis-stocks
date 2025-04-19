@@ -116,8 +116,21 @@ def loadSpyData(offsets, pathEqual, pathSpdr):
         dataSpdr.append(json.load(json_data))
     return dataEqual, dataSpdr
 
+def combineTemps(absoluteTemp, relativeTemp):
+    absoluteData = pd.read_csv(absoluteTemp)
+    absolute = absoluteData.drop('Unnamed: 0', axis=1)
+    relativeData = pd.read_csv(relativeTemp)
+    relative = relativeData[ratioKeys + ['ticker', 'date']]
+
+    # absoluteData.join(relativeData, on=['date', 'ticker'], how='inner', rsuffix='_relative')
+    combinedInnerDf = absolute.merge(relative, on=['ticker', 'date'], how='inner', suffixes=('', '_relative'))
+    df = combinedInnerDf.drop(['ticker', 'date'], axis=1)
+    df.to_csv('../data/combined_inner.csv')
+    return df
+
 
 if __name__ == "__main__":
-    generateFinalAbsoluteData()
-    tempPath = '../data/temp-relative.csv'
-    generateFinalRelativeDataFromTemp(tempPath)
+    # generateFinalAbsoluteData()
+    # tempPath = '../data/temp-relative.csv'
+    # generateFinalRelativeDataFromTemp(tempPath)
+    combineTemps('../data/temp-all.csv', '../data/temp-relative-alpha.csv')
