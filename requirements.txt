@@ -1,6 +1,8 @@
-selenium
-pandas
-numpy
+selenium~=4.27.1
+pandas~=2.2.3
+numpy~=2.2.1
 lxml
 pyjanitor
-scikit-learn
+scikit-learn~=1.6.1
+scipy~=1.15.2
+joblib~=1.4.2
