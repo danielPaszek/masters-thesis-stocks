@@ -1,0 +1,370 @@
+yAlpha = ['alpha1Year','adjustedAlpha1Year','equalAlpha1Year','equalAdjustedAlpha1Year','alpha2Year','adjustedAlpha2Year','equalAlpha2Year','equalAdjustedAlpha2Year']
+
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  25.0s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  14.1s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  40.6s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  40.8s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  40.9s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  15.0s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  13.6s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  30.2s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  29.9s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  30.1s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  17.4s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  19.1s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  33.6s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  34.0s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  22.0s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  33.9s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  25.8s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  26.5s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  37.7s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  24.4s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  37.0s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  33.3s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  22.3s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  21.3s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  31.6s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  31.5s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  29.2s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=  54.4s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  32.5s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=  55.0s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=  53.4s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  27.5s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  27.1s
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=  52.4s
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=  53.1s
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=  52.7s
+Got mean of: 0.08377497586491238
+Best parameters: {'svc__C': 10, 'svc__gamma': 'scale', 'svc__kernel': 'rbf'}
+Classification Report:
+               precision    recall  f1-score   support
+           0       0.63      0.56      0.59      3081
+           1       0.59      0.65      0.62      2972
+    accuracy                           0.61      6053
+   macro avg       0.61      0.61      0.61      6053
+weighted avg       0.61      0.61      0.61      6053
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  15.6s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  13.0s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  29.9s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  29.9s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  29.9s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  15.0s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  13.1s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  30.3s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  30.3s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  30.5s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  16.2s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  16.7s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  29.3s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  29.9s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  18.1s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  28.7s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  21.3s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  22.2s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  31.2s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  32.0s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  22.4s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  32.8s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  25.3s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  22.9s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  32.4s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  31.2s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  29.3s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=  48.1s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  29.2s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=  55.6s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=  48.0s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  28.2s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  28.3s
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=  47.9s
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=  53.9s
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=  46.2s
+Got mean of: 0.08032129723388952
+Best parameters: {'svc__C': 10, 'svc__gamma': 'scale', 'svc__kernel': 'rbf'}
+Classification Report:
+               precision    recall  f1-score   support
+           0       0.62      0.54      0.58      3068
+           1       0.58      0.66      0.62      2985
+    accuracy                           0.60      6053
+   macro avg       0.60      0.60      0.60      6053
+weighted avg       0.60      0.60      0.60      6053
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  21.3s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  28.2s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  28.2s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  28.5s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  17.2s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  28.0s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  28.6s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  28.6s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  26.0s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  19.4s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  22.2s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  29.2s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  27.4s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  27.1s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  26.5s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  25.7s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  50.8s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  58.8s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  24.8s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  26.0s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  58.1s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  50.6s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 2.0min
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  27.0s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  26.7s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  25.3s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 1.9min
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  24.8s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  24.9s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  24.5s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=13.0min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=13.1min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=22.2min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=32.1min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=20.7min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=30.5min
+Got mean of: 0.11716528258342976
+Best parameters: {'svc__C': 10, 'svc__gamma': 'scale', 'svc__kernel': 'rbf'}
+Classification Report:
+               precision    recall  f1-score   support
+           0       0.60      0.85      0.70      3310
+           1       0.63      0.30      0.41      2743
+    accuracy                           0.60      6053
+   macro avg       0.61      0.58      0.56      6053
+weighted avg       0.61      0.60      0.57      6053
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  23.1s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  28.8s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  27.8s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  27.9s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  28.7s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  28.1s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  28.1s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  49.8s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  24.5s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  28.9s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  26.7s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  50.7s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  26.4s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  26.2s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  26.9s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  25.1s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 1.1min
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  24.5s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  25.5s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 1.5min
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 1.1min
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  25.7s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 1.5min
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  25.6s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  26.1s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 3.9min
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 3.9min
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  24.4s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  25.0s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  25.0s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=10.8min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=13.7min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=11.0min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=11.9min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=35.8min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=34.4min
+Got mean of: 0.11108636490918546
+Best parameters: {'svc__C': 10, 'svc__gamma': 'scale', 'svc__kernel': 'rbf'}
+Classification Report:
+               precision    recall  f1-score   support
+           0       0.59      0.85      0.70      3306
+           1       0.62      0.30      0.41      2747
+    accuracy                           0.60      6053
+   macro avg       0.61      0.58      0.55      6053
+weighted avg       0.61      0.60      0.57      6053
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  22.9s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  28.2s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  27.2s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  27.2s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  18.6s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  21.6s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  27.4s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  27.4s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  25.6s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  22.0s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  19.2s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  21.0s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  26.1s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  27.2s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  25.9s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  24.9s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  37.6s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  37.9s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 1.2min
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  25.1s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  25.6s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  25.1s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  37.8s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  37.8s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 1.1min
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  26.2s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  26.8s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  26.9s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  24.4s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  23.9s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=15.2min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=18.1min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=18.1min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=26.1min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=14.0min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=24.5min
+Got mean of: 0.23272729321745778
+Best parameters: {'svc__C': 10, 'svc__gamma': 'scale', 'svc__kernel': 'rbf'}
+Classification Report:
+               precision    recall  f1-score   support
+           0       0.63      0.81      0.70      3285
+           1       0.65      0.43      0.52      2768
+    accuracy                           0.63      6053
+   macro avg       0.64      0.62      0.61      6053
+weighted avg       0.64      0.63      0.62      6053
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  22.4s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  27.9s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  27.3s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  27.5s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  15.7s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  18.4s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  27.8s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  28.1s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  26.2s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  21.3s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  15.6s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  17.5s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  26.7s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  26.5s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  26.5s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  25.0s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  25.0s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  34.5s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  24.2s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 1.2min
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  25.7s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  24.9s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  26.5s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  34.3s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  25.5s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 1.2min
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  26.3s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  28.0s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  24.9s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  24.0s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=25.2min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=26.3min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=26.3min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=30.9min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=22.8min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=28.5min
+Got mean of: 0.22732045272403703
+Best parameters: {'svc__C': 10, 'svc__gamma': 'scale', 'svc__kernel': 'rbf'}
+Classification Report:
+               precision    recall  f1-score   support
+           0       0.61      0.80      0.70      3271
+           1       0.64      0.41      0.50      2782
+    accuracy                           0.62      6053
+   macro avg       0.63      0.61      0.60      6053
+weighted avg       0.63      0.62      0.61      6053
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  22.7s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  25.7s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  24.9s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  25.2s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  14.6s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  16.5s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  25.8s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  25.7s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  24.2s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  21.9s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  14.1s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  15.5s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  25.9s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  25.7s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  25.4s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  25.2s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  37.9s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  40.5s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  22.9s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  25.1s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 1.6min
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  38.8s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  26.3s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  41.2s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  25.7s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  26.0s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 1.7min
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  25.2s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  23.6s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  23.5s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=42.5min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=48.7min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=55.3min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=55.2min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=40.6min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=47.0min
+Got mean of: 0.3532751332538817
+Best parameters: {'svc__C': 10, 'svc__gamma': 'scale', 'svc__kernel': 'rbf'}
+Classification Report:
+               precision    recall  f1-score   support
+           0       0.62      0.96      0.75      3552
+           1       0.74      0.17      0.28      2501
+    accuracy                           0.63      6053
+   macro avg       0.68      0.56      0.52      6053
+weighted avg       0.67      0.63      0.56      6053
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  19.8s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  25.8s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  25.8s
+[CV] END ......svc__C=0.1, svc__gamma=scale, svc__kernel=rbf; total time=  25.2s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  13.4s
+[CV] END ...svc__C=0.1, svc__gamma=scale, svc__kernel=linear; total time=  18.6s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  25.7s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  25.5s
+[CV] END .......svc__C=0.1, svc__gamma=auto, svc__kernel=rbf; total time=  24.7s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  18.8s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  13.8s
+[CV] END ....svc__C=0.1, svc__gamma=auto, svc__kernel=linear; total time=  18.0s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  25.6s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  25.6s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  25.4s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  24.3s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  38.3s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  23.4s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 1.2min
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  23.0s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  38.2s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 1.5min
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  25.1s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  24.8s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 1.2min
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  26.1s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 1.5min
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  25.2s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  23.9s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  23.4s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=45.0min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=45.6min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=45.0min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=45.4min
+[CV] END ...svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=103.0min
+[CV] END ....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=102.9min
+Got mean of: 0.32852447926671235
+Best parameters: {'svc__C': 10, 'svc__gamma': 'scale', 'svc__kernel': 'rbf'}
+Classification Report:
+               precision    recall  f1-score   support
+           0       0.62      0.96      0.75      3567
+           1       0.73      0.16      0.26      2486
+    accuracy                           0.63      6053
+   macro avg       0.67      0.56      0.51      6053
+weighted avg       0.66      0.63      0.55      6053
