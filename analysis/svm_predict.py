@@ -66,6 +66,8 @@ for yLabel in yAlpha:
     grid.fit(X_train, y_train)
     y_pred = grid.predict(X_test)
     xTaken = X_test[y_pred == 1]
+    # TUTAJ JEST CHYBA BŁĄD - czy X_test ma ten sam indeks?
+    # Chyba lepiej puścić jeszcze raz i dodać kolumne id i po niej joinować
     results = df.loc[df.index.intersection(xTaken.index)]
     results.to_csv('../data/svm_results/' + yLabel + '.csv', index=False)
 
