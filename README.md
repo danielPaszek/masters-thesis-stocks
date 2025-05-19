@@ -1,5 +1,11 @@
 Python 3.12
 
+trained svm models:
+analysis/models/*.joblib
+training - analysis/svm_predict.py
+
+
+
 ./data:
 - data - responses from API
 - error - failed responses
