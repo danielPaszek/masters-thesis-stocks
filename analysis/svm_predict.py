@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 import os
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
 from sklearn.svm import SVC
-from sklearn.metrics import classification_report, make_scorer
+from sklearn.metrics import classification_report, make_scorer, confusion_matrix
 from sklearn.pipeline import Pipeline
 from joblib import dump, load
 
@@ -19,6 +19,7 @@ relativeRatioKeys = [x + '_relative' for x in ratioKeys]
 df = pd.read_csv('../data/combined_inner.csv')
 X = df[ratioKeys + relativeRatioKeys]
 
+# TODO: Maybe later
 # #  https://stackoverflow.com/questions/48468115/how-to-create-a-customized-scoring-function-in-scikit-learn-for-scoring-a-set-of
 # import sklearn.utils.multiclass
 # def return_binary(y):
@@ -26,21 +27,14 @@ X = df[ratioKeys + relativeRatioKeys]
 # sklearn.utils.multiclass.type_of_target = return_binary
 
 
-# For loop with all the models is too slow. Run each training in separate run
-# yLabel = 'alpha1Year'
-# yLabel = 'adjustedAlpha1Year'
-# yLabel = 'equalAlpha1Year'
-# yLabel = 'equalAdjustedAlpha1Year'
-# yLabel = 'alpha2Year'
-# yLabel = 'adjustedAlpha2Year'
-# yLabel = 'equalAlpha2Year'
-# yLabel = 'equalAdjustedAlpha2Year'
-for yLabel in yAlpha:
+for yLabel in df[yAlpha]:
     yContinuous = df[yLabel]
     # TODO: adjust/test cut off
     y = np.where(yContinuous <= 0, 0, 1)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2, stratify=y)
+    print(y_test.mean())
+    print(y_train.mean())
     pipeline = Pipeline([
         ('scaler', StandardScaler()),
         ('svc', SVC())
@@ -51,16 +45,19 @@ for yLabel in yAlpha:
     # param_grid = {
     #     'svc__C': [10],
     # }
-    # TODO: SAVE MODEL PARAM. Not results, also test on 2015-2018 data, since they are not in training
+    # TODO: SAVE MODEL PARAM. Not results
     param_grid = {
-        'svc__C': [0.1, 1, 10],
+        'svc__C': [1, 10],
         'svc__gamma': ['scale', 'auto'],
         'svc__kernel': ['rbf', 'linear']
     }
 
-    grid = GridSearchCV(pipeline, param_grid,
-                        cv=3, verbose=2,
-                        refit=True, n_jobs=-1
+    grid = GridSearchCV(pipeline,
+                        param_grid,
+                        cv=StratifiedKFold(3),
+                        verbose=2,
+                        refit=True,
+                        n_jobs=-1
                         # scoring=alphaScore
                         )
     grid.fit(X_train, y_train)
@@ -68,13 +65,17 @@ for yLabel in yAlpha:
     xTaken = X_test[y_pred == 1]
     # TUTAJ JEST CHYBA BŁĄD - czy X_test ma ten sam indeks?
     # Chyba lepiej puścić jeszcze raz i dodać kolumne id i po niej joinować
-    results = df.loc[df.index.intersection(xTaken.index)]
-    results.to_csv('../data/svm_results/' + yLabel + '.csv', index=False)
+    wholeTestData = df.loc[df.index.intersection(X_test.index)]
+    wholeTestData.to_csv('../data/svm_results/' + yLabel + '.csv', index=False)
+
+    takenData = df.loc[df.index.intersection(xTaken.index)]
 
     estimator = grid.best_estimator_
     dump(grid, '../data/svm_models/' + yLabel + '.joblib')
 
-    print('Got mean of: ' + str(results.loc[:, yLabel].mean()))
+    print('Data mean of: ' + str(wholeTestData.loc[:, yLabel].mean()))
+    print('Results mean of: ' + str(takenData.loc[:, yLabel].mean()))
     print("Best parameters:", grid.best_params_)
     print("Classification Report:\n", classification_report(y_test, y_pred))
     # TODO: Do I train this for each y column?
+    print(confusion_matrix(y_test, y_pred))

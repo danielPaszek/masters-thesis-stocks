@@ -1,14 +1,18 @@
 from joblib import dump, load
 import pandas as pd
+import numpy as np
 from headers import *
+from sklearn.metrics import classification_report, make_scorer, confusion_matrix
 
 # TODO: ALL MODELS RETURN 1 FOR ALL OF THE DATA THAT WAS GIVEN TO THEM!!!!
-for label in yAlpha:
+# for label in yAlpha:
+for label in ['alpha1Year']:
     model = load('../data/svm_models/' + label + '.joblib')
     testedData = pd.read_csv('../data/svm_results/' + label + '.csv')
 
     X = testedData[ratioKeys + relativeRatioKeys]
-    y = testedData[label]
+    # TODO: adjust/test cut off
+    y = np.where(testedData[label] <= 0, 0, 1)
     df = pd.read_csv('../data/combined_inner.csv')
 
     print(f'data count: {testedData[label].count()}')
@@ -21,6 +25,8 @@ for label in yAlpha:
 
     print(f'res count {results[label].count()}')
     print(f'res count {results[label].mean()}')
+
+    print(confusion_matrix(y, y_pred))
 
     print(f'diff: {results[label].mean() - testedData[label].mean()}')
     print('-------------------------------------------------')
