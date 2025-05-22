@@ -273,24 +273,35 @@ weighted avg       0.66      0.64      0.58      6053
 0.4054188005947464
 0.4054857898215466
 Fitting 3 folds for each of 8 candidates, totalling 24 fits
-[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  26.7s
-[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  27.0s
-[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  26.2s
-[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  26.0s
-[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  40.7s
-[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  23.4s
-[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  23.3s
-[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 3.6min
-[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  37.2s
-[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  24.1s
-[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 3.5min
-[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  25.3s
-[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  25.7s
-[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 5.7min
-[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 5.6min
-[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  23.9s
-[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  23.7s
-[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  23.9s
-[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=34.1min
-[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=56.0min
-TO NIE KONIEC!!!!!!!!!
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  24.8s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  24.9s
+[CV] END ........svc__C=1, svc__gamma=scale, svc__kernel=rbf; total time=  25.7s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  24.9s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time=  37.3s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  22.8s
+[CV] END .........svc__C=1, svc__gamma=auto, svc__kernel=rbf; total time=  21.3s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 3.3min
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time=  35.5s
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 3.3min
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  22.8s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  24.2s
+[CV] END .......svc__C=10, svc__gamma=scale, svc__kernel=rbf; total time=  23.9s
+[CV] END .....svc__C=1, svc__gamma=scale, svc__kernel=linear; total time= 5.4min
+[CV] END ......svc__C=1, svc__gamma=auto, svc__kernel=linear; total time= 5.3min
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  22.9s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  23.6s
+[CV] END ........svc__C=10, svc__gamma=auto, svc__kernel=rbf; total time=  23.3s
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=31.6min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=52.2min
+[CV] END ....svc__C=10, svc__gamma=scale, svc__kernel=linear; total time=62.9min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=31.8min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=62.7min
+[CV] END .....svc__C=10, svc__gamma=auto, svc__kernel=linear; total time=50.7min
+Data mean of: 0.002947332607081462
+Results mean of: 0.3558874474355833
+Best parameters: {'svc__C': 10, 'svc__gamma': 'scale', 'svc__kernel': 'rbf'}
+Classification Report:
+               precision    recall  f1-score   support
+           0       0.63      0.94      0.75      3599
+           1       0.67      0.18      0.29      2454
+    accuracy                           0.63      6053

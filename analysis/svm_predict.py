@@ -27,7 +27,8 @@ X = df[ratioKeys + relativeRatioKeys]
 # sklearn.utils.multiclass.type_of_target = return_binary
 
 
-for yLabel in df[yAlpha]:
+for yLabel in yAlpha:
+# for yLabel in ['equalAdjustedAlpha2Year']:
     yContinuous = df[yLabel]
     # TODO: adjust/test cut off
     y = np.where(yContinuous <= 0, 0, 1)
