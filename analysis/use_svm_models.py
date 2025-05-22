@@ -4,10 +4,8 @@ import numpy as np
 from headers import *
 from sklearn.metrics import classification_report, make_scorer, confusion_matrix
 
-# TODO: ALL MODELS RETURN 1 FOR ALL OF THE DATA THAT WAS GIVEN TO THEM!!!!
-# for label in yAlpha:
-for label in ['alpha1Year']:
-    model = load('../data/svm_models/' + label + '.joblib')
+for label in yAlpha:
+    model = load('./models2/' + label + '.joblib')
     testedData = pd.read_csv('../data/svm_results/' + label + '.csv')
 
     X = testedData[ratioKeys + relativeRatioKeys]
@@ -24,7 +22,7 @@ for label in ['alpha1Year']:
     results = testedData.loc[testedData.index.intersection(xTaken.index)]
 
     print(f'res count {results[label].count()}')
-    print(f'res count {results[label].mean()}')
+    print(f'res mean {results[label].mean()}')
 
     print(confusion_matrix(y, y_pred))
 
