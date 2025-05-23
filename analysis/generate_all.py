@@ -124,8 +124,11 @@ def combineTemps(absoluteTemp, relativeTemp):
 
     # absoluteData.join(relativeData, on=['date', 'ticker'], how='inner', rsuffix='_relative')
     combinedInnerDf = absolute.merge(relative, on=['ticker', 'date'], how='inner', suffixes=('', '_relative'))
-    df = combinedInnerDf.drop(['ticker', 'date'], axis=1)
-    df.to_csv('../data/combined_inner.csv')
+    df = combinedInnerDf.drop(['date'], axis=1)
+    df['to_join_id'] = df.index
+    # df = combinedInnerDf.drop(['ticker', 'date'], axis=1)
+    # df.to_csv('../data/combined_inner.csv')
+    df.to_csv('../data/combined_inner_ticker.csv')
     return df
 
 
