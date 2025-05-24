@@ -4,17 +4,18 @@ from utils.mappingUtils import *
 from datetime import datetime
 import os
 
-fileNames = os.listdir('./data/market-data')
+# market-data & transformed -> results
+fileNames = os.listdir('./data/extra-data/market-data')
 
 for fileName in fileNames:
-    with open('./data/market-data/' + fileName) as json_data:
+    with open('./data/extra-data/market-data/' + fileName) as json_data:
         try:
             marketData = json.load(json_data)
-            f = open('./data/transformed/' + fileName)
+            f = open('./data/extra-data/transformed/' + fileName)
             transformedData = json.load(f)
         except:
             print('Error reading ' + fileName)
-            with open('./data/error/' + fileName, 'w', encoding='utf-8') as f:
+            with open('./data/extra-data/error/' + fileName, 'w', encoding='utf-8') as f:
                 f.write(json_data.read())
         dividends = marketData['dividends']
         cutoffDate = datetime.strptime('2015-01-01', '%Y-%m-%d')
@@ -52,5 +53,5 @@ for fileName in fileNames:
                 monthData['adjustedTotalPrice'] = latestTotal + monthData['price']
                 monthData['adjustedTotalPriceSpinoffExcl'] = latestTotalSpinoffExcl + monthData['price']
 
-        with open('./data/results/' + fileName, 'w', encoding='utf-8') as f:
+        with open('./data/extra-data/results/' + fileName, 'w', encoding='utf-8') as f:
             json.dump(transformedData, f, ensure_ascii=False, indent=4)

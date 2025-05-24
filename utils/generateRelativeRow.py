@@ -76,12 +76,12 @@ if __name__ == "__main__":
 
     ratioKeys = ['psRatio', 'peRatio', 'priceToBook', 'evToEbitda', 'evToEbit', 'priceToFreeCashFlow', 'evToSales', 'evToGrossProfit', 'priceToGrossProfit']
 
-    if not os.path.isfile('../data/temp-relative.csv'):
-        fileNames = os.listdir('../data/results')
+    if not os.path.isfile('../data/extra-data/temp-relative.csv'):
+        fileNames = os.listdir('../data/extra-data/results')
         companyDf = pd.DataFrame()
         i = 0
         for fileName in fileNames:
-            with open('../data/results/' + fileName) as json_data:
+            with open('../data/extra-data/results/' + fileName) as json_data:
                 data = json.load(json_data)
-                companyDf, i = getRelativeRows(data, ratioKeys, fileName, i, companyDf)
-        companyDf.to_csv('../data/temp-relative.csv', sep='\t')
+                companyDf, i = getRelativeRows(data, ratioKeys, fileName, i, companyDf, [1,2])
+        companyDf.to_csv('../data/extra-data/temp-relative.csv', sep='\t')

@@ -1,15 +1,9 @@
-from joblib import dump, load
-import pandas as pd
-import numpy as np
-from headers import *
-from sklearn.metrics import classification_report, make_scorer, confusion_matrix
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
-from scipy import stats
-import statsmodels.api as sm
+import os
 
-for yLabel in yAlpha:
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=2)
-    results = sm.OLS(y_train, X_train).fit()
-    model = results.model
-    model.predict()
+fileNames = os.listdir('../data/final-data-absolute')
+fileNames2 = os.listdir('../data/final-data-relative')
+diff = list(set(fileNames) - set(fileNames2))
+print(diff)
+print(len(os.listdir('../data/results-no-alpha')))
+
+lost = ['BAC.json', 'TFC.json', 'C.json', 'GEHC.json', 'JPM.json', 'VLTO.json', 'PNC.json', 'SYF.json', 'BX.json', 'CFG.json', 'BK.json', 'CEG.json', 'SCHW.json', 'COF.json', 'SOLV.json', 'APO.json', 'HBAN.json', 'GS.json', 'KKR.json', 'USB.json', 'STT.json', 'AXP.json', 'MTB.json', 'RF.json', 'MS.json', 'FITB.json', 'RJF.json', 'KEY.json', 'KVUE.json', 'DFS.json', 'NTRS.json', 'GEV.json', 'WFC.json']
