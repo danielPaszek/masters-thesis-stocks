@@ -145,15 +145,15 @@ def generateYnoAlpha(resultsPath='../data/extra-data/results/', yPath='../data/e
 def generateTempRelative(tempRelPath='../data/extra-data/temp-relative.csv', resultsPath='../data/extra-data/results/'):
     ratioKeys = ['psRatio', 'peRatio', 'priceToBook', 'evToEbitda', 'evToEbit', 'priceToFreeCashFlow', 'evToSales', 'evToGrossProfit', 'priceToGrossProfit']
 
-    if not os.path.isfile(tempRelPath):
-        fileNames = os.listdir(resultsPath)
-        companyDf = pd.DataFrame()
-        i = 0
-        for fileName in fileNames:
-            with open(resultsPath + fileName) as json_data:
-                data = json.load(json_data)
-                companyDf, i = getRelativeRows(data, ratioKeys, fileName, i, companyDf, [1,2])
-        companyDf.to_csv(tempRelPath, sep='\t')
+    # if not os.path.isfile(tempRelPath):
+    fileNames = os.listdir(resultsPath)
+    companyDf = pd.DataFrame()
+    i = 0
+    for fileName in fileNames:
+        with open(resultsPath + fileName) as json_data:
+            data = json.load(json_data)
+            companyDf, i = getRelativeRows(data, ratioKeys, fileName, i, companyDf, [1,2])
+    companyDf.to_csv(tempRelPath, sep='\t')
 
 def combineTemps(absoluteTemp, relativeTemp, combinedInnerPath='../data/extra-data/combined_inner_ticker.csv'):
     absoluteData = pd.read_csv(absoluteTemp)
