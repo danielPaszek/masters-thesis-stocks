@@ -37,3 +37,6 @@ Too much computation required to train all labels with all cutoffs
 - temp
 - transformed - mapped from responses to parceable form
 - y-no-alpha - calculated yPrices
+- combined_inner_ticker - 
+  - updated 08.06.2025 - added date because we need date split too. There shouldn't be data leaks in any model
+  - before - added ./data/extra-data with 501-700 companies marketcap in USA

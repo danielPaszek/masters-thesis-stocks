@@ -3,13 +3,25 @@ import pandas as pd
 import numpy as np
 import random
 
-def custom_train_test_split(paths=['../data/combined_inner_ticker.csv']):
+def joinDfs(paths):
     dfs = []
     for path in paths:
         dfs.append(pd.read_csv(path))
     df = pd.concat(dfs, ignore_index=True)
     df['to_join_id'] = df.index
+    return df
 
+# Compute "heavy" since we do 30-40k conversions to datetime
+def per_year_train_test_split(paths=['../data/combined_inner_ticker.csv'], splitDate='30-06-2021'):
+    splitDate = pd.to_datetime(splitDate, format='%d-%m-%Y')
+    df = joinDfs(paths)
+    df['date'] = df['date'].apply(lambda x: pd.to_datetime(x, format='%m-%Y'))
+    trainData = df[df['date'] <= splitDate]
+    testData = df[df['date'] > splitDate]
+    return trainData, testData
+
+def custom_train_test_split(paths=['../data/combined_inner_ticker.csv']):
+    df = joinDfs(paths)
     companies = df['ticker'].unique().tolist()
     k = int(0.2 * len(companies))
     random.seed(2)

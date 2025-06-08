@@ -3,6 +3,7 @@ import numpy as np
 import json
 import os
 import csv
+from cleanupNan import *
 from utils.generateFinalRow import generateFinalRows
 
 from utils.generateRelativeRow import getRelativeRows
@@ -162,8 +163,9 @@ def combineTemps(absoluteTemp, relativeTemp, combinedInnerPath='../data/extra-da
     relative = relativeData[ratioKeys + ['ticker', 'date']]
 
     # absoluteData.join(relativeData, on=['date', 'ticker'], how='inner', rsuffix='_relative')
-    combinedInnerDf = absolute.merge(relative, on=['ticker', 'date'], how='inner', suffixes=('', '_relative'))
-    df = combinedInnerDf.drop(['date'], axis=1)
+    df = absolute.merge(relative, on=['ticker', 'date'], how='inner', suffixes=('', '_relative'))
+    # don't drop date, we always select X as [ratioKeys + relativeRatioKeys], and needed for year split
+    # df = combinedInnerDf.drop(['date'], axis=1)
     df['to_join_id'] = df.index
     # df = combinedInnerDf.drop(['ticker', 'date'], axis=1)
     # df.to_csv('../data/combined_inner.csv')
@@ -172,15 +174,19 @@ def combineTemps(absoluteTemp, relativeTemp, combinedInnerPath='../data/extra-da
 
 
 if __name__ == "__main__":
-    # Before run generate_ratios.py and calculateTotalReturn.py
-    tempRelAlpha = '../data/extra-data/temp-relative-alpha.csv'
-    tempAll = '../data/extra-data/temp-all.csv'
-    # generateYnoAlpha()
-    generateTempRelative()
-    generateFinalAbsoluteData('../data/extra-data/final-data-absolute/', tempAll)
-    generateFinalRelativeDataFromTemp(
-        '../data/extra-data/temp-relative.csv',
-        '../data/extra-data/final-data-relative/',
-        tempRelAlpha
-    )
-    combineTemps(tempAll, tempRelAlpha)
+    # # Before run generate_ratios.py and calculateTotalReturn.py
+    # tempRelAlpha = '../data/extra-data/temp-relative-alpha.csv'
+    # tempAll = '../data/extra-data/temp-all.csv'
+    tempRelAlpha = '../data/temp-relative-alpha.csv'
+    tempAll = '../data/temp-all.csv'
+    # # generateYnoAlpha()
+    # generateTempRelative()
+    # generateFinalAbsoluteData('../data/extra-data/final-data-absolute/', tempAll)
+    # generateFinalRelativeDataFromTemp(
+    #     '../data/extra-data/temp-relative.csv',
+    #     '../data/extra-data/final-data-relative/',
+    #     tempRelAlpha
+    # )
+    # combineTemps(tempAll, tempRelAlpha, '../data/combined_inner_ticker.csv')
+
+    cleanupNan('../data/extra-data/combined_inner_ticker.csv', '../data/extra-data/combined_inner_ticker.csv')
