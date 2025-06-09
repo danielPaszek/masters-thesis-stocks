@@ -13,10 +13,14 @@ Too much computation required to train all labels with all cutoffs
 - NEVER TRAINED ON CUSTOM SPLIT - TODO: THIS
 - results between 5-15% cagr better than alpha
 
+TODO: predict_proba for LinearSVC in general_learning and year_learning -> ONE FINAL NOTEBOOK?
 [general_learning.ipynb](analysis%2Fgeneral_learning.ipynb):
 - adjusted cutoff, tried using balanced classes
 - USED company split
 - drew results and comparisons - basically ready for paper
+
+[year_learning.ipynb](analysis%2Fyear_learning.ipynb):
+- this is copy of general_learning but run on split year dataset
 
 [svr_learning.ipynb](analysis%2Fsvr_learning.ipynb)
 - TRAGIC RESULTS - R2 = 0 - model as good as average y
@@ -24,6 +28,12 @@ Too much computation required to train all labels with all cutoffs
 - no surprise - SLR told this was difficult, not really scope of this paper, but still
 - 
 
+[linear_svm.ipynb](analysis%2Flinear_svm.ipynb):
+- general_learning is better file. This was first try
+- cv on cutoff=0, results acceptable
+- BUT regular train_test_split!
+
+[linear_analysis.ipynb](analysis%2Flinear_analysis.ipynb)
 
 ./data:
 - data - responses from API
