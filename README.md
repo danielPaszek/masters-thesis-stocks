@@ -1,4 +1,7 @@
 Python 3.12
+
+TODO: w regresji puścić na combined datasecie, obecnie jest tylko data/combiner_inner
+
 TODO: banalny test t studenta na każdym parametrze np cutoff = mean(PE), sprawdzający czy to działa. Potem jak mam histogramy to również test t studenta na każdym binie
 
 TODO: year split implementation. Model can see apple previous data, but not latest - DONE, but not used everywhere
