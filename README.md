@@ -1,6 +1,6 @@
 Python 3.12
 
-TODO: year split implementation. Model can see apple previous data, but not latest
+TODO: create new dataset for LSTM, because we no longer need _relative
 
 trained svm models:
 analysis/models/*.joblib
