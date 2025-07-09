@@ -7,6 +7,7 @@ from sklearn.model_selection import GridSearchCV, StratifiedKFold
 from sklearn.svm import LinearSVC
 from sklearn.pipeline import Pipeline
 import matplotlib.pyplot as plt
+from joblib import dump, load
 
 
 def drawFrom1results(toPlot, yLabel, x, title='', keys=['svc', 'tree', ]):
@@ -57,7 +58,7 @@ def getPipeline(isBalanced):
         ])
     }
 
-def trainPipeline(cutoffs, yLabels, trainDf, testDf, thresholds, isBalanced=False):
+def trainPipeline(cutoffs, yLabels, trainDf, testDf, thresholds, isBalanced=False, saveModel=False):
     X_train = trainDf[ratioKeys + relativeRatioKeys]
     X_test = testDf[ratioKeys + relativeRatioKeys]
     resultsToPlot = {}
@@ -77,12 +78,12 @@ def trainPipeline(cutoffs, yLabels, trainDf, testDf, thresholds, isBalanced=Fals
                     'svc__penalty': ['l1', 'l2']
                 }
             ]
-            resultsToPlot = cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf, yLabel, y_test, y_train, thresholds)
+            resultsToPlot = cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf, yLabel, y_test, y_train, thresholds, saveModel)
 
     return resultsToPlot
 
 
-def cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf, yLabel, y_test, y_train, thresholds):
+def cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf, yLabel, y_test, y_train, thresholds, saveModel=False):
     xTrue = X_test[y_test == 1]
     trueData = testDf.loc[testDf.index.intersection(xTrue.index)]
     print('-----------------')
@@ -99,6 +100,9 @@ def cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf
                             )
         grid.fit(X_train, y_train)
         y_pred = grid.predict(X_test)
+
+        if saveModel:
+            dump(grid, f'../data/cvPipeline/{key}{yLabel}{cutoff}.joblib')
 
         wholeTestData = testDf.loc[testDf.index.intersection(X_test.index)]
 
