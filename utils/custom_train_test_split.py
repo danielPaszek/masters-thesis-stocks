@@ -12,10 +12,10 @@ def joinDfs(paths):
     return df
 
 # Compute "heavy" since we do 30-40k conversions to datetime
-def per_year_train_test_split(paths=['../data/combined_inner_ticker.csv'], splitDate='30-06-2021'):
+def per_year_train_test_split(paths=['../data/combined_inner_ticker.csv'], splitDate='30-06-2021', format='%m-%Y'):
     splitDate = pd.to_datetime(splitDate, format='%d-%m-%Y')
     df = joinDfs(paths)
-    df['date'] = df['date'].apply(lambda x: pd.to_datetime(x, format='%m-%Y'))
+    df['date'] = df['date'].apply(lambda x: pd.to_datetime(x, format=format))
     trainData = df[df['date'] <= splitDate]
     testData = df[df['date'] > splitDate]
     return trainData, testData
