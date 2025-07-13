@@ -1,12 +1,31 @@
 Python 3.12
 
-TODO: create new dataset for LSTM, because we no longer need _relative
+What was done by now?
+[final_learning.ipynb](analysis/final_learning.ipynb):
+- Train ALL LinearSVC and DecisionTree models
+- plot results cutoff -> return (mean, median), plot thresholds too
+- ISSUE -> run on duplicated dataset
+- TODO: rerun on deduplicated/combine_inner_ticker.csv
+
+[analize_why.ipynb](analysis/analize_why.ipynb):
+- confusion matrix etc for (thresholds and decision trees) * cutoff
+- Only alpha1Year and alpha2Year, because so much results
+- taken returns grouped to bins -> analize why LinearSVC works but LinearSVR doesn't
+- SAME ISSUE AND TODO AS ABOVE!
+
+=============================
+[general_learning.ipynb](analysis/general_learning.ipynb):
+- v1 of final_learning
+
+
+### TODO: create new dataset for LSTM, because we no longer need _relative
+Then we are able to use per year split.
+
 
 TODO: w regresji puścić na combined datasecie, obecnie jest tylko data/combiner_inner
 
 TODO: banalny test t studenta na każdym parametrze np cutoff = mean(PE), sprawdzający czy to działa. Potem jak mam histogramy to również test t studenta na każdym binie
 
-TODO: year split implementation. Model can see apple previous data, but not latest - DONE, but not used everywhere
 
 trained svm models:
 analysis/models/*.joblib
