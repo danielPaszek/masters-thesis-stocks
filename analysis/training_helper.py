@@ -16,7 +16,7 @@ def drawFrom1results(toPlot, yLabel, x, title='', keys=['svc', 'tree', ]):
     else:
         fig, axes = plt.subplots(ncols=int((len(keys)+1)/2), nrows=2, figsize=(20, 10))
         axes = axes.flatten()
-
+    fig.tight_layout(pad=5.5)
     for i, key in enumerate(keys):
         axes[i].plot(x, [d['mean'] for d in toPlot[key]], color='red', label='mean')
         axes[i].plot(x, [d['median'] for d in toPlot[key]], color='green', label='median')
@@ -25,7 +25,7 @@ def drawFrom1results(toPlot, yLabel, x, title='', keys=['svc', 'tree', ]):
         axes[i].grid(True)
         axes[i].set_xscale('log')
         axes[i].set_title(f'{yLabel} {key} {title}')
-        axes[i].set_xlabel('Cutoff')
+        axes[i].set_xlabel('Cutoff (log scale)')
         axes[i].set_ylabel('Alpha')
 
 
@@ -102,7 +102,7 @@ def cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf
         y_pred = grid.predict(X_test)
 
         if saveModel:
-            dump(grid, f'../data/cvPipeline/{key}{yLabel}{cutoff}.joblib')
+            dump(grid, f'../data/cvPipeline-2/{key}{yLabel}{cutoff}.joblib')
 
         wholeTestData = testDf.loc[testDf.index.intersection(X_test.index)]
 

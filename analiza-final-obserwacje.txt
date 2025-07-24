@@ -1,0 +1,34 @@
+POMYSL:
+Jak będzie only absolute ticker.csv to można puścić trening jeszcze raz na LinearSVC i zobaczyć wpływ customowych wskaźników.
+W sumie dobry i przydatny pomysł.
+YEAR:
+	alpha1y -> ok 6-8%
+	balanced - minimalnie gorzej (1ptk fajny -> 95 0.35)
+	adj alpha1y -> trochę lepiej niż alpha, ale mniej stabilnie
+	balanced - ten sam wygląd, minimalnie gorszy
+	equalAlpha1y - trochę gorzej niż alpha
+- można wrzucić porównanie jakieś, że to balanced to identico wygląda dla threshold
+	2year:
+	trendy spadkowe cutoff, a nie rosnące :O
+	alpha2y -> ogromny rozstrzał med/mean. Trzeba spojrzeć na analize_why
+	alpha2y -> 25-35% - wynik rzędu 10-15% CAGR alpha. SUPER!!!!
+	balanced -> to samo co wszędzie
+	adjusted - większe rozchwianie
+	equalAlpha2y -> 50% WTF -> 22.47 CAGR! Trochę oszukana metryka, ale still. Dla 1y dawała taki sam rezultat
+	equalAdjAlpha2y -> potrafi być stabilnie > 50%. Za dobry wynik :D. Może przetrenować dla kilku seedów i dać średnią?
+
+COMPANY:
+	alpha1y - 12-16% - chyba data leak jest niezerowy dla testu googl vs trening aapl, mstf itp
+	adjAlpha1y - 95 przebił 20%. Duuuuuuuuużo
+	equal1y - ok, ale wiadomo
+	eqAdj1y - 25% w maxie :D
+	alpha2y - 90 robi ponad 40%, 95 przebił 60%. Za dobrze wychwytuje skorelowane ze sobą akcje, a zna wynik kolegi 
+	eqAdj2y - przebitki 50%. Będzie co pisać czemu nie poszło
+	
+RAND:
+	alpha1y - 15% - no to ten sam problem. Tutaj nawet głupi go widzi. 
+	W ogóle przez cały ten zbiór drzewa dominują robiąc średnio 35% XD. SVM może 15 wykręca :D
+	Same screeny drzew wystarczą do magisterki. Może jakiś 1 svm do podparcia tezy
+
+	
+	
