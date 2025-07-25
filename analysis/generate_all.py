@@ -67,7 +67,7 @@ def generateFinalRelativeDataFromTemp(tempPath, finalDataPath='../data/final-dat
         dict_writer.writerows(allData)
 
 
-def generateFinalAbsoluteData(finalDataPath='../data/final-data-absolute/', tempAllPath='../data/temp-all.csv', yPath='../data/extra-data/y-no-alpha/'):
+def generateFinalAbsoluteData(finalDataPath='../data/final-data-absolute/', tempAllPath='../data/temp-all.csv', yPath='../data/extra-data/y-no-alpha/', saveEach=True):
     fileNames = os.listdir(yPath)
     offsets = [1, 2]
     dataEqual, dataSpdr = loadSpyData(offsets, pathEqual, pathSpdr)
@@ -82,10 +82,12 @@ def generateFinalAbsoluteData(finalDataPath='../data/final-data-absolute/', temp
         toTempCompany = mapCompanyJsonToTemp(companyData)
         for tempData in toTempCompany:
             allData.append(tempData)
-        with open(finalDataPath + fileName.replace('.csv', '.json'), 'w') as f:
-            json.dump(companyData, f)
-            print('Done' + fileName)
-
+        if saveEach:
+            with open(finalDataPath + fileName.replace('.csv', '.json'), 'w') as f:
+                json.dump(companyData, f)
+                print('Done' + fileName)
+        else:
+            print('Done')
     with open(tempAllPath, 'w', newline='') as myfile:
         dict_writer = csv.DictWriter(myfile, allData[0].keys())
         dict_writer.writeheader()
@@ -181,12 +183,12 @@ if __name__ == "__main__":
     tempAll = '../data/temp-all.csv'
     # # generateYnoAlpha()
     # generateTempRelative()
-    # generateFinalAbsoluteData('../data/extra-data/final-data-absolute/', tempAll)
+    generateFinalAbsoluteData('../data/extra-data/final-data-absolute/', tempAll)
     # generateFinalRelativeDataFromTemp(
     #     '../data/extra-data/temp-relative.csv',
     #     '../data/extra-data/final-data-relative/',
     #     tempRelAlpha
     # )
-    # combineTemps(tempAll, tempRelAlpha, '../data/combined_inner_ticker.csv')
+    combineTemps(tempAll, tempRelAlpha, '../data/combined_inner_ticker.csv')
 
     cleanupNan('../data/extra-data/combined_inner_ticker.csv', '../data/extra-data/combined_inner_ticker.csv')
