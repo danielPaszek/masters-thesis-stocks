@@ -31,7 +31,7 @@ def transformToTimesteps(df, yLabel, timesteps, cutoff = 0.0):
         # data.append([]) no need for another dimension
         for i in range(len(rows)-timesteps):
             curr = rows[i:i+timesteps]
-            data.append(curr[ratioKeys + relativeRatioKeys].to_numpy())
+            data.append(curr[ratioKeys].to_numpy())
             y.append(int(curr.iloc[-1, :][yLabel] > 0.0))
 
     return np.array(data), np.array(y)
@@ -39,22 +39,23 @@ def transformToTimesteps(df, yLabel, timesteps, cutoff = 0.0):
 
 series_length = 24
 # TODO: create a new dataset with just ratio keys
-features = len(relativeRatioKeys+ratioKeys)
+features = len(ratioKeys)
 # Maybe having company info won't be bad??
-files = ['../data/deduplicated/combined_inner_ticker.csv']
+files = ['../data/lstm/combined_whole_ticker.csv']
 yLabels = ['alpha1Year']
 
 
-# trainDf, testDf = per_year_train_test_split(files, format='%Y-%m-%d')
-trainDf, testDf = custom_train_test_split(files)
+trainDf, testDf = per_year_train_test_split(files, splitDate='30-04-2020')
+# trainDf, testDf = custom_train_test_split(files)
 scaler = StandardScaler()
-trainDf[ratioKeys + relativeRatioKeys + yAlpha] = scaler.fit_transform(trainDf[ratioKeys + relativeRatioKeys + yAlpha])
-testDf[ratioKeys + relativeRatioKeys + yAlpha] = scaler.transform(testDf[ratioKeys + relativeRatioKeys + yAlpha])
+trainDf[ratioKeys + yAlpha] = scaler.fit_transform(trainDf[ratioKeys + yAlpha])
+testDf[ratioKeys + yAlpha] = scaler.transform(testDf[ratioKeys + yAlpha])
 
 for yLabel in yLabels:
     print('Starting')
     X_train, y_train = transformToTimesteps(trainDf, yLabel, series_length)
     X_test, y_test = transformToTimesteps(testDf, yLabel, series_length)
+    a = 1
 #     # TODO: Add dropout
     lstm_input = Input(shape=(series_length, features), name='lstm_input')
     inputs = LSTM(150)(lstm_input)

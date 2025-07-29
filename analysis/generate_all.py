@@ -174,6 +174,14 @@ def combineTemps(absoluteTemp, relativeTemp, combinedInnerPath='../data/extra-da
     df.to_csv(combinedInnerPath)
     return df
 
+def combineWholeTemps(absoluteTemp1, absoluteTemp2, combinedWholePath='../data/extra-data/combined_inner_ticker.csv'):
+    absoluteData = pd.read_csv(absoluteTemp1)
+    absolute1 = absoluteData.drop('Unnamed: 0', axis=1)
+    absoluteData = pd.read_csv(absoluteTemp2)
+    absolute2 = absoluteData.drop('Unnamed: 0', axis=1)
+    df = pd.concat([absolute1, absolute2]).drop_duplicates().reset_index(drop=True)
+    df.to_csv(combinedWholePath)
+    return df
 
 if __name__ == "__main__":
     # # Before run generate_ratios.py and calculateTotalReturn.py
