@@ -1,10 +1,3 @@
-# Test with combined_inner_ticker, but I think we can generate just absolute data and test it too. It is because we will have a series that will show past
-
-from keras.models import Sequential
-from keras.layers import LSTM
-from keras.layers import Dropout
-from keras.layers import Dense
-from keras.layers import TimeDistributed
 import tensorflow as tf
 import keras
 from keras import optimizers
@@ -17,6 +10,8 @@ from headers import *
 from utils.custom_train_test_split import custom_train_test_split, per_year_train_test_split
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
+import itertools
+
 
 
 
@@ -26,6 +21,7 @@ def transformToTimesteps(df, yLabel, timesteps, cutoff = 0.0):
     companies = pd.unique(df['ticker'])
     data = []
     y = []
+    yPerc = []
     for company in companies:
         rows = df[df['ticker'] == company]
         # data.append([]) no need for another dimension
@@ -33,16 +29,26 @@ def transformToTimesteps(df, yLabel, timesteps, cutoff = 0.0):
             curr = rows[i:i+timesteps]
             data.append(curr[ratioKeys].to_numpy())
             y.append(int(curr.iloc[-1, :][yLabel] > 0.0))
+            yPerc.append(curr.iloc[-1, :][yLabel])
 
-    return np.array(data), np.array(y)
+    return np.array(data), np.array(y), np.array(yPerc)
+
+def createModel(dropout=0.0, seqDropout=0.0):
+    lstm_input = Input(shape=(series_length, features), name='lstm_input')
+    inputs = LSTM(150, dropout=dropout, recurrent_dropout=seqDropout)(lstm_input)
+    output = Dense(1, activation='sigmoid')(inputs)
+    model = Model(inputs=lstm_input, outputs=output)
+    adam = optimizers.Adam()
+    model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['accuracy'])
+    return model
 
 
 series_length = 24
-# TODO: create a new dataset with just ratio keys
 features = len(ratioKeys)
-# Maybe having company info won't be bad??
 files = ['../data/lstm/combined_whole_ticker.csv']
 yLabels = ['alpha1Year']
+dropouts = [0.0, 0.2, 0.4]
+seqDropouts = [0.0, 0.2, 0.4]
 
 
 trainDf, testDf = per_year_train_test_split(files, splitDate='30-04-2020')
@@ -50,22 +56,18 @@ trainDf, testDf = per_year_train_test_split(files, splitDate='30-04-2020')
 scaler = StandardScaler()
 trainDf[ratioKeys + yAlpha] = scaler.fit_transform(trainDf[ratioKeys + yAlpha])
 testDf[ratioKeys + yAlpha] = scaler.transform(testDf[ratioKeys + yAlpha])
-
-for yLabel in yLabels:
-    print('Starting')
-    X_train, y_train = transformToTimesteps(trainDf, yLabel, series_length)
-    X_test, y_test = transformToTimesteps(testDf, yLabel, series_length)
-    a = 1
-#     # TODO: Add dropout
-    lstm_input = Input(shape=(series_length, features), name='lstm_input')
-    inputs = LSTM(150)(lstm_input)
-    output = Dense(1, activation='sigmoid')(inputs)
-    model = Model(inputs=lstm_input, outputs=output)
-    adam = optimizers.Adam()
-    model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['accuracy'])
+itertools.product()
+for params in itertools.product(yLabels, dropouts, seqDropouts):
+    yLabel, dropout, seqDropout = params
+    print('==================')
+    print(f'Starting label: {yLabel} and dropout: {dropout}, seq dropout: {seqDropout}')
+    X_train, y_train, yPerc_train = transformToTimesteps(trainDf, yLabel, series_length)
+    X_test, y_test, yPerc_test = transformToTimesteps(testDf, yLabel, series_length)
+    model = createModel(dropout=dropout, seqDropout=seqDropout)
     model.fit(x=X_train, y=y_train, epochs=15, shuffle=True, validation_split=0.1)
 
     y_pred = model.predict(X_test)
+    y_pred = y_pred.flatten()
     y_pred01 = (y_pred > 0.5).astype(int)
 
     # Final evaluation of the model
@@ -75,4 +77,9 @@ for yLabel in yLabels:
     print(classification_report(y_test, y_pred01))
     print('------')
     print(confusion_matrix(y_test, y_pred01))
+
+    takenPerc = yPerc_test[y_pred01 == 1]
+    prc = round(len(takenPerc) / len(yPerc_test) * 100, 2)
+    print(f'Taken percent from dataset was {prc}%')
+    print(f'Mean was {np.mean(takenPerc)} and median was {np.median(takenPerc)}')
 
