@@ -44,7 +44,7 @@ def getPipeline(isBalanced):
             ]),
             'svc': Pipeline([
                 ('scaler', StandardScaler()),
-                ('svc', LinearSVC(class_weight='balanced'))
+                ('svc', LinearSVC(class_weight='balanced', random_state=123))
             ])
         }
     return {
@@ -54,7 +54,7 @@ def getPipeline(isBalanced):
         ]),
         'svc': Pipeline([
             ('scaler', StandardScaler()),
-            ('svc', LinearSVC())
+            ('svc', LinearSVC(random_state=123))
         ])
     }
 
@@ -93,7 +93,8 @@ def cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf
     for (key, pipeline), param_grid in zip(pipelines.items(), params):
         grid = GridSearchCV(pipeline,
                             param_grid,
-                            cv=StratifiedKFold(3, shuffle=True, random_state=3),
+                            # cv=StratifiedKFold(3, shuffle=True, random_state=3),
+                            cv=StratifiedKFold(3, shuffle=True, random_state=2),
                             refit=True,
                             n_jobs=-1,
                             # scoring='f1',

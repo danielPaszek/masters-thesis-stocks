@@ -50,13 +50,13 @@ yLabels = ['alpha1Year']
 dropouts = [0.0, 0.2, 0.4]
 seqDropouts = [0.0, 0.2, 0.4]
 
-
+# TODO: MOVE TO notebook
 trainDf, testDf = per_year_train_test_split(files, splitDate='30-04-2020')
 # trainDf, testDf = custom_train_test_split(files)
 scaler = StandardScaler()
 trainDf[ratioKeys + yAlpha] = scaler.fit_transform(trainDf[ratioKeys + yAlpha])
 testDf[ratioKeys + yAlpha] = scaler.transform(testDf[ratioKeys + yAlpha])
-itertools.product()
+
 for params in itertools.product(yLabels, dropouts, seqDropouts):
     yLabel, dropout, seqDropout = params
     print('==================')
