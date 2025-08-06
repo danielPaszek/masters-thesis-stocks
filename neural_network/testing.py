@@ -11,6 +11,7 @@ from utils.custom_train_test_split import custom_train_test_split, per_year_trai
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import itertools
+from keras.callbacks import EarlyStopping
 
 
 
@@ -83,3 +84,57 @@ for params in itertools.product(yLabels, dropouts, seqDropouts):
     print(f'Taken percent from dataset was {prc}%')
     print(f'Mean was {np.mean(takenPerc)} and median was {np.median(takenPerc)}')
 
+# CHAT IMPROVEMENTS
+# from keras.layers import BatchNormalization
+# from keras.callbacks import EarlyStopping, ReduceLROnPlateau
+#
+#
+# def createModel(dropout=0.0, seqDropout=0.0):
+#     lstm_input = Input(shape=(series_length, features), name='lstm_input')
+#
+#     # First LSTM layer with batch normalization
+#     x = LSTM(128, return_sequences=True,
+#              dropout=dropout, recurrent_dropout=seqDropout)(lstm_input)
+#     x = BatchNormalization()(x)
+#
+#     # Second LSTM layer
+#     x = LSTM(64, dropout=dropout, recurrent_dropout=seqDropout)(x)
+#     x = BatchNormalization()(x)
+#
+#     # Dense layers
+#     x = Dense(32, activation='relu')(x)
+#     x = Dropout(dropout)(x)
+#     output = Dense(1, activation='sigmoid')(x)
+#
+#     model = Model(inputs=lstm_input, outputs=output)
+#
+#     # Use a lower learning rate
+#     adam = optimizers.Adam(learning_rate=0.001)
+#     model.compile(optimizer=adam, loss='binary_crossentropy', metrics=['accuracy'])
+#     return model
+#
+#
+# # Create callbacks for training
+# early_stopping = EarlyStopping(
+#     monitor='val_loss',
+#     patience=5,
+#     restore_best_weights=True
+# )
+#
+# reduce_lr = ReduceLROnPlateau(
+#     monitor='val_loss',
+#     factor=0.2,
+#     patience=3,
+#     min_lr=0.00001
+# )
+#
+# # During training, use the callbacks:
+# model.fit(
+#     x=X_train,
+#     y=y_train,
+#     epochs=50,
+#     batch_size=32,
+#     shuffle=True,
+#     validation_split=0.1,
+#     callbacks=[early_stopping, reduce_lr]
+# )

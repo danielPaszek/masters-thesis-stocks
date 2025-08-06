@@ -44,7 +44,7 @@ def getPipeline(isBalanced):
             ]),
             'svc': Pipeline([
                 ('scaler', StandardScaler()),
-                ('svc', LinearSVC(class_weight='balanced', random_state=123))
+                ('svc', LinearSVC(class_weight='balanced', random_state=321))
             ])
         }
     return {
@@ -54,7 +54,7 @@ def getPipeline(isBalanced):
         ]),
         'svc': Pipeline([
             ('scaler', StandardScaler()),
-            ('svc', LinearSVC(random_state=123))
+            ('svc', LinearSVC(random_state=321))
         ])
     }
 
@@ -78,12 +78,12 @@ def trainPipeline(cutoffs, yLabels, trainDf, testDf, thresholds, isBalanced=Fals
                     'svc__penalty': ['l1', 'l2']
                 }
             ]
-            resultsToPlot = cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf, yLabel, y_test, y_train, thresholds, saveModel)
+            resultsToPlot = cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf, yLabel, y_test, y_train, thresholds, saveModel, isBalanced)
 
     return resultsToPlot
 
 
-def cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf, yLabel, y_test, y_train, thresholds, saveModel=False):
+def cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf, yLabel, y_test, y_train, thresholds, saveModel=False, isBalanced=False):
     xTrue = X_test[y_test == 1]
     trueData = testDf.loc[testDf.index.intersection(xTrue.index)]
     print('-----------------')
@@ -102,8 +102,10 @@ def cvPipeline(X_test, X_train, cutoff, params, pipelines, resultsToPlot, testDf
         grid.fit(X_train, y_train)
         y_pred = grid.predict(X_test)
 
-        if saveModel:
+        if saveModel and not isBalanced:
             dump(grid, f'../data/cvPipeline-2/{key}{yLabel}{cutoff}.joblib')
+        elif saveModel and isBalanced:
+            dump(grid, f'../data/cvPipeline-2/balanced/{key}{yLabel}{cutoff}.joblib')
 
         wholeTestData = testDf.loc[testDf.index.intersection(X_test.index)]
 
